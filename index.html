@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shubh Malhotra — DevOps / SRE</title>
+  <meta name="description" content="Shubh Malhotra — DevOps / SRE portfolio & resume" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <img src="profile.jpg" alt="Shubh Malhotra" class="avatar-small" />
+        <span>Shubh Malhotra</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#devops">DevOps</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+      </div>
+      <button id="themeToggle" aria-label="Toggle theme">🌓</button>
+    </div>
+  </nav>
+
+  <header class="hero" id="about">
+    <div class="hero-left">
+      <img src="profile.jpg" alt="Shubh Malhotra" class="avatar" />
+    </div>
+    <div class="hero-right">
+      <h1>Shubh Malhotra</h1>
+      <p class="title">Software Engineer — DevOps / SRE</p>
+      <p class="summary">
+        Software Engineer (DevOps/SRE) with 5+ years experience in cloud infra automation, CI/CD, observability,
+        and reliability engineering. Reduced deployment time by 60%, cut cloud costs ~20%, and implemented observability
+        for large-scale microservices. (Content from resume.) :contentReference[oaicite:1]{index=1}
+      </p>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/shubh-malhotra-881b47ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/s3cretagent" target="_blank" rel="noopener">GitHub</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="experience" class="card">
+      <h2>Experience</h2>
+
+      <article class="job">
+        <h3>Software Engineer (DevOps) — Superhero Tech Pvt. Ltd., Bengaluru</h3>
+        <p class="muted">Jul 2025 – Present</p>
+        <ul>
+          <li>Engineered EKS workloads for 50+ microservices with HA; secured multi-account AWS infra (IAM, WAF, CloudFormation).</li>
+          <li>Automated Jenkins CI pipelines and implemented Grafana/Prometheus/Loki observability — lowered MTTR by ~35%.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <h3>Software Engineer (Senior SRE) — Superhero Tech Pvt. Ltd., Bengaluru</h3>
+        <p class="muted">Apr 2022 – Jul 2025</p>
+        <ul>
+          <li>Administered AWS infra (100+ EC2, RDS, Lambda, EKS); led Blue-Green deployments and scaling optimizations (-20% spend).</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <h3>Software Engineer (SRE) — Treebo Hotels, Bengaluru</h3>
+        <p class="muted">Dec 2021 – Apr 2022</p>
+        <ul>
+          <li>Built Jenkins pipelines for ECS/EC2/S3, dashboards with Grafana & CloudWatch.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="devops" class="card">
+      <h2>Advanced DevOps & SRE Skills</h2>
+      <p class="muted">Curated set of practical skills, playbooks and examples you can reference in interviews or docs.</p>
+
+      <div class="skill-grid">
+        <div class="skill">
+          <h4>Kubernetes (EKS) — Production Patterns</h4>
+          <p>Multi-tenant namespaces, network policies, PodDisruptionBudgets, HorizontalPodAutoscaler with custom metrics,
+          vertical pod autoscaler for stateful workloads, and GitOps-driven manifests (Helm + Kustomize).</p>
+        </div>
+
+        <div class="skill">
+          <h4>CI/CD — Declarative, Secure Pipelines</h4>
+          <p>Jenkins & GitHub Actions templates implementing PR gating, canary & blue-green releases, automated rollbacks,
+          artifact signing, and secrets via HashiCorp Vault / AWS Secrets Manager.</p>
+        </div>
+
+        <div class="skill">
+          <h4>Infrastructure as Code</h4>
+          <p>Modular CloudFormation + Terragrunt patterns; immutable infra; policy-as-code with OPA/Gatekeeper for compliance checks.</p>
+        </div>
+
+        <div class="skill">
+          <h4>Observability & SLO-driven Engineering</h4>
+          <p>Prometheus metrics + Loki logs + Grafana dashboards; SLOs & error budgets tied to alerting and release decisions.
+          Automated runbooks (PagerDuty + Opsgenie integrations).</p>
+        </div>
+
+        <div class="skill">
+          <h4>Cost & Capacity Optimization</h4>
+          <p>Automated rightsizing pipeline, spot instance strategies, cluster autoscaler tuning, and scheduled non-prod shutdowns
+          to reduce costs without impacting SLAs.</p>
+        </div>
+
+        <div class="skill">
+          <h4>Security & Compliance</h4>
+          <p>IAM least-privilege policies, ECR vulnerability scanning, AWS WAF rules, automated infra scanning (tfsec, checkov), and
+          runtime security with Falco.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Pro Tips:</strong> Add automated chaos testing (chaos mesh/steadybit), implement dependency SBOMs, and run weekly SLO reviews.
+      </div>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Selected Projects</h2>
+      <div class="project">
+        <h4>Cost Optimization Dashboard</h4>
+        <p>Cost observability using Grafana + CloudWatch + AWS Cost Explorer APIs with automated rightsizing recommendations
+        (reduced monthly cloud costs by ~25%).</p>
+      </div>
+
+      <div class="project">
+        <h4>Database Migration Automation</h4>
+        <p>Python-based framework using AWS DMS for zero-downtime migrations, provisioning RDS and orchestrating schema syncs.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:shubhmalhotra07@gmail.com">shubhmalhotra07@gmail.com</a> • Phone: +91-9654910542</p>
+      <form id="contactForm" onsubmit="return submitContact(event)">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="message" placeholder="Message" required></textarea>
+        <button type="submit" class="btn">Send</button>
+        <small id="contactNote" class="muted">This form uses your mail client (mailto) by default.</small>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Shubh Malhotra — Built with care</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

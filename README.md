@@ -1,6 +1,6 @@
 # Shubh Malhotra — DevOps / SRE
 
-[Visit Portfolio](https://s3cretagent.github.io)  
+[Visit Portfolio](https://s3cretagent.github.io/portfolio/)  
 
 ---
 
@@ -13,7 +13,7 @@ Reduced deployment time by 60%, cut cloud costs ~20%, and implemented observabil
 - **Location:** Bengaluru, India  
 - **Email:** [shubhmalhotra07@gmail.com](mailto:shubhmalhotra07@gmail.com)  
 - **LinkedIn:** [Shubh Malhotra](https://www.linkedin.com/in/shubh-malhotra-881b47ab)  
-- **GitHub:** [github.com/your-github](https://github.com/s3cretagent)  
+- **GitHub:** [github.com/s3cretagent](https://github.com/s3cretagent)  
 - **Resume:** [Download PDF](resume.pdf)
 
 ---
@@ -60,7 +60,7 @@ Reduced deployment time by 60%, cut cloud costs ~20%, and implemented observabil
 - **Email:** [shubhmalhotra07@gmail.com](mailto:shubhmalhotra07@gmail.com)  
 - **Phone:** +91-9654910542  
 - **LinkedIn:** [Shubh Malhotra](https://www.linkedin.com/in/shubh-malhotra-881b47ab)  
-- **GitHub:** [your-github](https://github.com/s3cretagent)
+- **GitHub:** [s3cretagent](https://github.com/s3cretagent)
 
 ---
 
