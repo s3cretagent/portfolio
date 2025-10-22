@@ -12,8 +12,7 @@ themeToggle.addEventListener('click', () => {
     root.style.setProperty('--white', '#111827');
     root.style.setProperty('--accent', '#ffb703');
     root.style.setProperty('--accent2', '#219ebc');
-    document.body.style.background =
-      'linear-gradient(180deg, #fff7e6 0%, #fafafa 100%)';
+    document.body.style.background = '#fafaf9';
   } else {
     root.style.setProperty('--bg', '#0f0f0f');
     root.style.setProperty('--card', '#1b1b1b');
@@ -21,8 +20,33 @@ themeToggle.addEventListener('click', () => {
     root.style.setProperty('--white', '#fefefe');
     root.style.setProperty('--accent', '#ffb703');
     root.style.setProperty('--accent2', '#219ebc');
-    document.body.style.background =
-      'radial-gradient(circle at 10% 10%, #1a1a1a 0%, #0f0f0f 100%)';
+    document.body.style.background = '#0f0f0f';
+  }
+});
+
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+mobileMenuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+  });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
   }
 });
 
