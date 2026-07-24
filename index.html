@@ -41,9 +41,22 @@
     </div>
   </nav>
 
+  <div class="scene-bg" aria-hidden="true">
+    <div class="grid-3d"></div>
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
   <header class="hero" id="about">
     <div class="hero-left">
-      <img src="profile.jpg" alt="Shubh Malhotra" class="avatar" />
+      <div class="avatar-stage" data-tilt data-tilt-max="18">
+        <div class="avatar-3d">
+          <img src="profile.jpg" alt="Shubh Malhotra" class="avatar" data-depth="40" />
+          <span class="avatar-ring" data-depth="80"></span>
+          <span class="avatar-badge" data-depth="120">DevOps · SRE</span>
+        </div>
+      </div>
     </div>
     <div class="hero-right">
       <h1>Shubh Malhotra</h1>
