@@ -50,6 +50,62 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// ---------- 3D Resume interactions ----------
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReducedMotion) {
+  // Mark cards, skills and projects as tiltable
+  document.querySelectorAll('.card, .skill').forEach((el) => {
+    el.setAttribute('data-tilt', '');
+    if (!el.dataset.tiltMax) el.dataset.tiltMax = '8';
+  });
+
+  const tiltEls = document.querySelectorAll('[data-tilt]');
+
+  tiltEls.forEach((el) => {
+    const max = parseFloat(el.dataset.tiltMax || '10');
+    const depthLayers = el.querySelectorAll('[data-depth]');
+
+    const onMove = (e) => {
+      const rect = el.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      const rotX = (-py * max).toFixed(2);
+      const rotY = (px * max).toFixed(2);
+      el.style.transform =
+        `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+
+      depthLayers.forEach((layer) => {
+        const d = parseFloat(layer.dataset.depth || '0');
+        layer.style.transform =
+          `translateZ(${d}px) translate(${px * d * 0.15}px, ${py * d * 0.15}px)`;
+      });
+    };
+
+    const reset = () => {
+      el.style.transform = '';
+      depthLayers.forEach((layer) => {
+        const d = parseFloat(layer.dataset.depth || '0');
+        layer.style.transform = `translateZ(${d}px)`;
+      });
+    };
+
+    el.addEventListener('mousemove', onMove);
+    el.addEventListener('mouseleave', reset);
+  });
+
+  // Parallax orbs follow the cursor across the page
+  const orbs = document.querySelectorAll('.orb');
+  window.addEventListener('mousemove', (e) => {
+    const cx = e.clientX / window.innerWidth - 0.5;
+    const cy = e.clientY / window.innerHeight - 0.5;
+    orbs.forEach((orb, i) => {
+      const factor = (i + 1) * 18;
+      orb.style.transform = `translate(${cx * factor}px, ${cy * factor}px)`;
+    });
+  });
+}
+
 function submitContact(e) {
   e.preventDefault();
   const form = e.target;
