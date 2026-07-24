@@ -3,11 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shubh Malhotra — DevOps / SRE</title>
-  <meta name="description" content="Shubh Malhotra — DevOps / SRE portfolio & resume" />
+  <title>Shubh Malhotra — DevOps / SRE / Cloud Infrastructure</title>
+  <meta name="description" content="Shubh Malhotra — Software Engineer (DevOps / SRE) specialising in AWS, Kubernetes (EKS), Terraform, GitOps and cloud cost optimisation." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- 3D service-mesh / cluster-topology background (custom, dependency-free) -->
+  <canvas id="mesh-bg" aria-hidden="true"></canvas>
+
   <nav class="nav">
     <div class="nav-inner">
       <div class="brand">
@@ -17,8 +21,9 @@
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
-        <a href="#devops">DevOps</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
         <a href="#contact">Contact</a>
         <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
       </div>
@@ -34,19 +39,13 @@
     <div class="mobile-menu" id="mobileMenu">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
-      <a href="#devops">DevOps</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
       <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
     </div>
   </nav>
-
-  <div class="scene-bg" aria-hidden="true">
-    <div class="grid-3d"></div>
-    <span class="orb orb-1"></span>
-    <span class="orb orb-2"></span>
-    <span class="orb orb-3"></span>
-  </div>
 
   <header class="hero" id="about">
     <div class="hero-left">
@@ -60,12 +59,18 @@
     </div>
     <div class="hero-right">
       <h1>Shubh Malhotra</h1>
-      <p class="title">Software Engineer — DevOps / SRE</p>
+      <p class="title">Software Engineer — DevOps / SRE / Cloud Infrastructure</p>
       <p class="summary">
-        Software Engineer (DevOps/SRE) with 5+ years experience in cloud infra automation, CI/CD, observability,
-        and reliability engineering. Reduced deployment time by 60%, cut cloud costs ~20%, and implemented observability
-        for large-scale microservices.
+        DevOps &amp; Site Reliability Engineer with 4+ years building and operating cloud infrastructure at scale.
+        I run a Kubernetes (EKS) platform for 50+ microservices at 99.95%+ uptime, provisioned 25 production clusters
+        with Terraform, drive GitOps delivery with ArgoCD, and cut cloud spend ~20% (~$50K/year) while reducing MTTR by 35%.
       </p>
+      <div class="stats">
+        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Microservices on EKS</span></div>
+        <div class="stat"><span class="stat-num">25</span><span class="stat-label">EKS clusters via Terraform</span></div>
+        <div class="stat"><span class="stat-num">99.95%</span><span class="stat-label">Uptime SLA</span></div>
+        <div class="stat"><span class="stat-num">~$50K</span><span class="stat-label">Annual cost saved</span></div>
+      </div>
       <div class="links">
         <a href="https://www.linkedin.com/in/shubh-malhotra-881b47ab" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/s3cretagent" target="_blank" rel="noopener">GitHub</a>
@@ -79,94 +84,124 @@
       <h2>Experience</h2>
 
       <article class="job">
-        <h3>Software Engineer (DevOps) — Superhero Tech Pvt. Ltd., Bengaluru</h3>
+        <h3>Software Engineer, DevOps — Superhero Tech Pvt. Ltd., Bengaluru</h3>
         <p class="muted">Jul 2025 – Present</p>
         <ul>
-          <li>Engineered EKS workloads for 50+ microservices with HA; secured multi-account AWS infra (IAM, WAF, CloudFormation).</li>
-          <li>Automated Jenkins CI pipelines and implemented Grafana/Prometheus/Loki observability — lowered MTTR by ~35%.</li>
+          <li>Designed and operate a Kubernetes (EKS) platform serving 50+ microservices — HPA, VPA, Cluster Autoscaler and multi-AZ node groups holding 99.95%+ uptime SLA.</li>
+          <li>Provisioned 25 production EKS clusters via Terraform IaC (VPC, control plane, IAM/IRSA, add-ons) with S3 remote state + DynamoDB locking and per-environment workspaces.</li>
+          <li>Authored an org-wide shared Helm chart library, cutting new microservice onboarding from 2+ days to under 30 minutes.</li>
+          <li>Established GitOps delivery with ArgoCD (app-of-apps, sync waves, health checks, instant rollback), eliminating manual <code>kubectl apply</code> in production.</li>
+          <li>Built Woodpecker CI (build, test, lint, Trivy, ECR push) cutting PR feedback to under 8 minutes across 30+ repos; hardened AWS with WAF, GuardDuty, SCPs and CloudTrail for 1M+ monthly users.</li>
+          <li>Deployed Prometheus (200+ targets), Grafana RED dashboards, Loki and PagerDuty alerting — driving a 35% MTTR reduction.</li>
         </ul>
       </article>
 
       <article class="job">
-        <h3>Software Engineer (Senior SRE) — Superhero Tech Pvt. Ltd., Bengaluru</h3>
+        <h3>Software Engineer, Senior SRE — Superhero Tech Pvt. Ltd., Bengaluru</h3>
         <p class="muted">Apr 2022 – Jul 2025</p>
         <ul>
-          <li>Administered AWS infra (100+ EC2, RDS, Lambda, EKS); led Blue-Green deployments and scaling optimizations (-20% spend).</li>
+          <li>Owned AWS infrastructure at scale: 100+ EC2 (ASGs), RDS Multi-AZ PostgreSQL, Lambda, CloudFront, EKS and ECR handling millions of daily API requests against SLO targets.</li>
+          <li>Architected AWS MSK (Managed Kafka) for real-time event streaming with Debezium PostgreSQL CDC connectors for sub-second, zero-loss OLTP-to-analytical replication.</li>
+          <li>Designed an RDS read-replica topology with automated failover, offloading analytics and reducing primary DB load by ~40%.</li>
+          <li>Led Blue-Green deployments with automated smoke tests and instant switchback — zero-downtime releases for 18+ consecutive months.</li>
+          <li>Drove a 20% cloud cost reduction (~$50K/year) via Savings Plans, RI analysis, Auto Scaling tuning and S3 lifecycle optimisation.</li>
         </ul>
       </article>
 
       <article class="job">
-        <h3>Software Engineer (SRE) — Treebo Hotels, Bengaluru</h3>
-        <p class="muted">Dec 2021 – Apr 2022</p>
+        <h3>Software Engineer, SRE — Treebo Hotels, Bengaluru</h3>
+        <p class="muted">Jun 2021 – Apr 2022 · Intern Jun–Dec 2021</p>
         <ul>
-          <li>Built Jenkins pipelines for ECS/EC2/S3, dashboards with Grafana & CloudWatch.</li>
+          <li>Built production Jenkins pipelines integrated with AWS ECS, EC2 and S3; standardised deployment across 15+ microservices, reducing manual effort by 70%.</li>
+          <li>Instrumented Grafana dashboards and CloudWatch alarms for SLIs (P50/P95/P99 latency, error rate, saturation) — improving incident detection by 30%.</li>
+          <li>Automated deployment and monitoring scripts in Python and Bash, building the PostgreSQL, AWS and Linux foundation for later SRE roles.</li>
         </ul>
       </article>
     </section>
 
-    <section id="devops" class="card">
-      <h2>Advanced DevOps & SRE Skills</h2>
-      <p class="muted">Curated set of practical skills, playbooks and examples you can reference in interviews or docs.</p>
+    <section id="skills" class="card">
+      <h2>Technical Skills</h2>
+      <p class="muted">Production-tested across cloud platforms, orchestration, delivery and observability.</p>
 
       <div class="skill-grid">
         <div class="skill">
-          <h4>Kubernetes (EKS) — Production Patterns</h4>
-          <p>Multi-tenant namespaces, network policies, PodDisruptionBudgets, HorizontalPodAutoscaler with custom metrics,
-          vertical pod autoscaler for stateful workloads, and GitOps-driven manifests (Helm + Kustomize).</p>
+          <h4>Cloud Platforms</h4>
+          <p>AWS — EC2, RDS, Lambda, EKS, ECR, S3, CloudFormation, CloudFront, WAF, Cost Explorer, DMS, MSK. GCP — VPC, VM, Cloud SQL, Secret Manager.</p>
         </div>
 
         <div class="skill">
-          <h4>CI/CD — Declarative, Secure Pipelines</h4>
-          <p>Jenkins & GitHub Actions templates implementing PR gating, canary & blue-green releases, automated rollbacks,
-          artifact signing, and secrets via HashiCorp Vault / AWS Secrets Manager.</p>
+          <h4>Containers &amp; Orchestration</h4>
+          <p>Kubernetes (EKS, 25+ clusters via Terraform), Docker, Helm (custom chart authoring), HPA, VPA and Cluster Autoscaler.</p>
         </div>
 
         <div class="skill">
-          <h4>Infrastructure as Code</h4>
-          <p>Modular CloudFormation + Terragrunt patterns; immutable infra; policy-as-code with OPA/Gatekeeper for compliance checks.</p>
+          <h4>CI/CD &amp; Automation</h4>
+          <p>Jenkins, GitHub Actions, ArgoCD (GitOps), Woodpecker CI, Terraform IaC, Python scripting and Bash/Linux.</p>
         </div>
 
         <div class="skill">
-          <h4>Observability & SLO-driven Engineering</h4>
-          <p>Prometheus metrics + Loki logs + Grafana dashboards; SLOs & error budgets tied to alerting and release decisions.
-          Automated runbooks (PagerDuty + Opsgenie integrations).</p>
+          <h4>Observability &amp; Monitoring</h4>
+          <p>Grafana, Prometheus, Loki, CloudWatch, Alertmanager and PagerDuty; SLO/error-budget driven incident management.</p>
         </div>
 
         <div class="skill">
-          <h4>Cost & Capacity Optimization</h4>
-          <p>Automated rightsizing pipeline, spot instance strategies, cluster autoscaler tuning, and scheduled non-prod shutdowns
-          to reduce costs without impacting SLAs.</p>
+          <h4>Databases &amp; Streaming</h4>
+          <p>PostgreSQL, AWS RDS (Multi-AZ, read replicas), AWS MSK (Managed Kafka) and Debezium CDC connectors.</p>
         </div>
 
         <div class="skill">
-          <h4>Security & Compliance</h4>
-          <p>IAM least-privilege policies, ECR vulnerability scanning, AWS WAF rules, automated infra scanning (tfsec, checkov), and
-          runtime security with Falco.</p>
+          <h4>AI-Assisted Engineering</h4>
+          <p>Daily use of Claude (Sonnet/Opus), GPT-4o and Gemini, with AugmentCode / AmpCode / CodeMux for IaC generation, code review and incident RCA.</p>
         </div>
       </div>
 
       <div class="callout">
-        <strong>Pro Tips:</strong> Implement robust dependency tracking, enforce measurable SLOs, and continuously refine operational workflows.
+        <strong>Pro Tips:</strong> Treat infrastructure as code, enforce measurable SLOs with error budgets, and ship via GitOps so every change is reviewed, reversible and observable.
       </div>
     </section>
 
     <section id="projects" class="card">
-      <h2>Selected Projects</h2>
+      <h2>Key Projects</h2>
       <div class="project">
         <h4>Cost Optimization Dashboard</h4>
-        <p>Cost observability using Grafana + CloudWatch + AWS Cost Explorer APIs with automated rightsizing recommendations
-        (reduced monthly cloud costs by ~25%).</p>
+        <p class="muted stack">Grafana · AWS CloudWatch · Cost Explorer APIs · Python / Boto3</p>
+        <p>Multi-account cost observability platform visualising spend per service, team and environment in real time, with automated instance right-sizing — reducing monthly cloud costs by ~25%.</p>
       </div>
 
       <div class="project">
-        <h4>Database Migration Automation</h4>
-        <p>Python-based framework using AWS DMS for zero-downtime migrations, provisioning RDS and orchestrating schema syncs.</p>
+        <h4>Database Migration Automation Framework</h4>
+        <p class="muted stack">Python · Boto3 · AWS DMS · Debezium · Kafka</p>
+        <p>Fully automated framework for zero-downtime migrations: provisions RDS via Boto3, replicates schemas/indexes/sequences, and runs DMS full-load + CDC with Debezium connectors for downstream Kafka sync.</p>
       </div>
+
+      <div class="project">
+        <h4>Kubernetes Cluster Provisioning Automation</h4>
+        <p class="muted stack">Terraform · EKS · Helm · IAM/IRSA</p>
+        <p>Reusable Terraform modules (VPC, EKS, node groups, IAM/IRSA, add-ons) provisioning 25 EKS clusters with remote S3 state, DynamoDB locking and per-environment workspaces; Helm library onboards new services in under 30 minutes.</p>
+      </div>
+    </section>
+
+    <section id="education" class="card">
+      <h2>Education &amp; Certifications</h2>
+      <article class="job">
+        <h3>B.Tech, Computer Science &amp; Engineering — IK Gujral Punjab Technical University</h3>
+        <p class="muted">Jul 2018 – Jun 2022 · Jalandhar, Punjab</p>
+      </article>
+      <div class="badges">
+        <span class="badge">AWS Educate Cloud 101</span>
+        <span class="badge">AWS Educate Solutions Architect</span>
+        <span class="badge">Python Training — IIT Bombay</span>
+        <span class="badge">NASSCOM AI Practitioner</span>
+      </div>
+      <ul class="lead-list">
+        <li>Mentored junior engineers on Kubernetes operations, CI/CD best practices and cloud cost optimisation.</li>
+        <li>Hosted technical workshops as part of the ACM Chapter, Chandigarh Engineering College; active in hackathons and innovation sprints.</li>
+      </ul>
     </section>
 
     <section id="contact" class="card">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:shubhmalhotra07@gmail.com">shubhmalhotra07@gmail.com</a> • Phone: +91-9654910542</p>
+      <p>Email: <a href="mailto:shubhmalhotra07@gmail.com">shubhmalhotra07@gmail.com</a> • Phone: +91-9654910542 • New Delhi, India</p>
       <form id="contactForm" onsubmit="return submitContact(event)">
         <input type="text" name="name" placeholder="Your name" required />
         <input type="email" name="email" placeholder="Email" required />
