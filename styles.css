@@ -147,11 +147,13 @@ body {
   padding: 12px;
 }
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  background: linear-gradient(180deg, rgba(20,20,20,0.72), rgba(20,20,20,0.6));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 24px;
   border-radius: var(--radius);
   margin-bottom: 22px;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
   box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -302,8 +304,8 @@ html.light .footer span {
 }
 
 html.light .card {
-  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
-  border: 1px solid rgba(0,0,0,0.05);
+  background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.72));
+  border: 1px solid rgba(0,0,0,0.06);
   box-shadow: 0 3px 10px rgba(0,0,0,0.05);
 }
 
@@ -432,52 +434,91 @@ html.light .mobile-menu a:hover {
 
 /* ---------- 3D Resume enhancements ---------- */
 
-/* Animated depth background */
-.scene-bg {
+/* Custom 3D service-mesh / cluster-topology background (canvas) */
+#mesh-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  perspective: 600px;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(33,158,188,0.10), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, rgba(255,183,3,0.08), transparent 60%),
+    #0f0f0f;
 }
-.grid-3d {
-  position: absolute;
-  left: 50%;
-  bottom: -30%;
-  width: 220vw;
-  height: 140vh;
-  transform: translateX(-50%) rotateX(72deg);
-  transform-origin: center bottom;
-  background-image:
-    linear-gradient(rgba(255,183,3,0.10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(33,158,188,0.10) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: grid-move 12s linear infinite;
-  mask-image: linear-gradient(to top, #000 10%, transparent 80%);
-  -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 80%);
+html.light #mesh-bg {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(33,158,188,0.12), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, rgba(245,158,11,0.10), transparent 60%),
+    #fafaf9;
 }
-@keyframes grid-move {
-  from { background-position: 0 0; }
-  to { background-position: 0 60px; }
-}
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.35;
-  will-change: transform;
-}
-.orb-1 { width: 320px; height: 320px; top: 8%; left: -60px; background: var(--accent); }
-.orb-2 { width: 260px; height: 260px; top: 40%; right: -80px; background: var(--accent2); }
-.orb-3 { width: 200px; height: 200px; bottom: 6%; left: 30%; background: #8ecae6; opacity: 0.25; }
 
-html.light .grid-3d {
-  background-image:
-    linear-gradient(rgba(245,158,11,0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(33,158,188,0.14) 1px, transparent 1px);
+/* Hero stat tiles */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
 }
-html.light .orb { opacity: 0.22; }
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.06);
+  min-width: 120px;
+}
+.stat-num {
+  font-size: 22px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+html.light .stat { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); }
+
+/* Project tech stack line */
+.stack {
+  font-size: 13px;
+  margin: 2px 0 6px;
+  color: var(--accent2);
+}
+
+/* Certification badges */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0;
+}
+.badge {
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,183,3,0.12), rgba(33,158,188,0.12));
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--white);
+}
+html.light .badge { border-color: rgba(0,0,0,0.08); color: #111827; }
+
+.lead-list { color: var(--muted); line-height: 1.6; margin: 6px 0 0; padding-left: 18px; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.08);
+}
+html.light code { background: rgba(0,0,0,0.06); }
 
 /* Generic tilt behaviour (JS-driven) */
 [data-tilt] {
@@ -542,15 +583,21 @@ html.light .orb { opacity: 0.22; }
 .skill h4 { transform: translateZ(24px); }
 
 @media (prefers-reduced-motion: reduce) {
-  .grid-3d, .orb { animation: none; }
   [data-tilt] { transition: none; }
 }
 
 @media (max-width: 880px) {
   .hero {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    margin: 24px auto;
   }
+  .hero-left { flex: 0 0 auto; }
+  .summary { margin-left: auto; margin-right: auto; }
+  .stats { justify-content: center; }
+  .links { justify-content: center; }
   .nav-links {
     display: none;
   }
@@ -567,4 +614,21 @@ html.light .orb { opacity: 0.22; }
     font-size: 13px;
     padding: 6px 10px;
   }
+}
+
+@media (max-width: 560px) {
+  .hero { padding: 16px; }
+  h1 { font-size: 1.7rem; }
+  .title { font-size: 0.95rem; }
+  .container { padding: 8px; }
+  .card { padding: 18px 16px; }
+  .avatar-stage { width: 168px; height: 168px; }
+  .avatar-3d .avatar { width: 150px; height: 150px; }
+  .stats { gap: 8px; }
+  .stat { flex: 1 1 42%; min-width: 0; padding: 8px 12px; }
+  .stat-num { font-size: 18px; }
+  .job h3, .project h4 { font-size: 1rem; line-height: 1.35; }
+  ul { padding-left: 20px; }
+  .badges { gap: 8px; }
+  .badge { font-size: 12px; }
 }
