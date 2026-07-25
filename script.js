@@ -188,8 +188,8 @@ if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
   });
 }
 
-/* ---------- Subtle 3D tilt on cards / avatar ---------- */
-if (!prefersReducedMotion) {
+/* ---------- Subtle 3D tilt on cards / avatar (fine pointer only) ---------- */
+if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
   document.querySelectorAll('[data-tilt]').forEach((el) => {
     const max = parseFloat(el.dataset.tiltMax || '8');
     const depthLayers = el.querySelectorAll('[data-depth]');
