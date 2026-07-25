@@ -7,215 +7,352 @@
   <meta name="description" content="Shubh Malhotra — Software Engineer (DevOps / SRE) specialising in AWS, Kubernetes (EKS), Terraform, GitOps and cloud cost optimisation." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Apply saved theme before paint to avoid a flash
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.add('light');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
-  <!-- 3D service-mesh / cluster-topology background (custom, dependency-free) -->
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+  <!-- Custom cursor -->
+  <div class="cur-ring" id="curRing" aria-hidden="true"></div>
+  <div class="cur-dot" id="curDot" aria-hidden="true"></div>
+  <!-- Touch ripple (mobile) -->
+  <div class="touch-ring" id="touchRing" aria-hidden="true"></div>
+
+  <!-- Interactive 3D wave-mesh background -->
   <canvas id="mesh-bg" aria-hidden="true"></canvas>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <!-- Drifting aurora glow -->
+  <div class="aurora" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <!-- Film grain -->
+  <div class="grain" aria-hidden="true"></div>
 
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand">
-        <img src="profile.jpg" alt="Shubh Malhotra" class="avatar-small" />
+      <a class="brand" href="#top">
+        <svg class="brand-logo" viewBox="0 0 32 32" width="26" height="26" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="blGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#c6f24e" />
+              <stop offset="1" stop-color="#34d399" />
+            </linearGradient>
+          </defs>
+          <path d="M16 3 L27 9.5 V22.5 L16 29 L5 22.5 V9.5 Z" stroke="url(#blGrad)" stroke-width="2" stroke-linejoin="round" />
+          <circle cx="16" cy="16" r="3.1" fill="url(#blGrad)" />
+        </svg>
         <span>Shubh Malhotra</span>
-      </div>
+      </a>
       <div class="nav-links">
-        <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
       </div>
       <div class="nav-right">
+        <a class="btn btn-primary magnetic" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
         <button id="themeToggle" aria-label="Toggle theme">🌓</button>
         <button id="hamburger" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
-      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+      <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
     </div>
   </nav>
 
-  <header class="hero" id="about">
-    <div class="hero-left">
-      <div class="avatar-stage" data-tilt data-tilt-max="18">
-        <div class="avatar-3d">
-          <img src="profile.jpg" alt="Shubh Malhotra" class="avatar" data-depth="40" />
-          <span class="avatar-ring" data-depth="80"></span>
-          <span class="avatar-badge" data-depth="120">DevOps · SRE</span>
+  <header class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="status-pill"><span class="status-dot"></span> Available for new opportunities</span>
+        <span class="eyebrow">DevOps · SRE · Cloud Infrastructure</span>
+        <h1>Hi, I'm<br /><span class="grad-text">Shubh Malhotra</span></h1>
+        <p class="title">I engineer <span class="type-wrap"><span id="typeText" class="grad-text"></span><span class="caret" aria-hidden="true"></span></span></p>
+        <p class="summary">
+          Site Reliability &amp; DevOps engineer with 5+ years running production infrastructure. I operate a
+          Kubernetes (EKS) platform for 50+ microservices at 99.95%+ uptime, provision clusters with Terraform,
+          ship via GitOps, and drive down cost and MTTR without compromising reliability.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary magnetic" href="#projects">View my work</a>
+          <a class="btn btn-ghost magnetic" href="resume.pdf" target="_blank" rel="noopener">Download Resume ↓</a>
+        </div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/shubh-malhotra-881b47ab" target="_blank" rel="noopener">LinkedIn</a>
+          <span class="dot">•</span>
+          <a href="https://github.com/s3cretagent" target="_blank" rel="noopener">GitHub</a>
+          <span class="dot">•</span>
+          <a href="mailto:shubhmalhotra07@gmail.com">Email</a>
+          <span class="dot">•</span>
+          <span class="muted">New Delhi, India</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="avatar-stage" data-tilt data-tilt-max="14">
+          <div class="avatar-3d">
+            <span class="avatar-glow" data-depth="10"></span>
+            <img src="profile.jpg" alt="Shubh Malhotra" class="avatar" data-depth="40" />
+            <span class="avatar-ring" data-depth="80"></span>
+            <span class="float-chip chip-1" data-depth="120">☸ EKS · 25 clusters</span>
+            <span class="float-chip chip-2" data-depth="140">⚡ 99.95% uptime</span>
+            <span class="float-chip chip-3" data-depth="100">📉 −35% MTTR</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="hero-right">
-      <h1>Shubh Malhotra</h1>
-      <p class="title">Software Engineer — DevOps / SRE / Cloud Infrastructure</p>
-      <p class="summary">
-        DevOps &amp; Site Reliability Engineer with 4+ years building and operating cloud infrastructure at scale.
-        I run a Kubernetes (EKS) platform for 50+ microservices at 99.95%+ uptime, provisioned 25 production clusters
-        with Terraform, drive GitOps delivery with ArgoCD, and cut cloud spend ~20% (~$50K/year) while reducing MTTR by 35%.
-      </p>
-      <div class="stats">
-        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Microservices on EKS</span></div>
-        <div class="stat"><span class="stat-num">25</span><span class="stat-label">EKS clusters via Terraform</span></div>
-        <div class="stat"><span class="stat-num">99.95%</span><span class="stat-label">Uptime SLA</span></div>
-        <div class="stat"><span class="stat-num">~$50K</span><span class="stat-label">Annual cost saved</span></div>
-      </div>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/shubh-malhotra-881b47ab" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/s3cretagent" target="_blank" rel="noopener">GitHub</a>
-        <a href="#contact">Contact</a>
-      </div>
+
+    <div class="stat-strip reveal">
+      <div class="stat"><span class="stat-num" data-target="50" data-suffix="+">0</span><span class="stat-label">Microservices on EKS</span></div>
+      <div class="stat"><span class="stat-num" data-target="25">0</span><span class="stat-label">EKS clusters via Terraform</span></div>
+      <div class="stat"><span class="stat-num" data-target="99.95" data-decimals="2" data-suffix="%">0</span><span class="stat-label">Production uptime SLA</span></div>
+      <div class="stat"><span class="stat-num" data-prefix="~$" data-target="50" data-suffix="K">0</span><span class="stat-label">Annual cloud cost saved</span></div>
     </div>
   </header>
 
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>AWS</span><span>Kubernetes</span><span>Terraform</span><span>ArgoCD</span><span>Helm</span><span>Prometheus</span><span>Grafana</span><span>Loki</span><span>Jenkins</span><span>GitHub Actions</span><span>Docker</span><span>PostgreSQL</span><span>Kafka</span><span>Debezium</span><span>Trivy</span><span>PagerDuty</span>
+        <span>AWS</span><span>Kubernetes</span><span>Terraform</span><span>ArgoCD</span><span>Helm</span><span>Prometheus</span><span>Grafana</span><span>Loki</span><span>Jenkins</span><span>GitHub Actions</span><span>Docker</span><span>PostgreSQL</span><span>Kafka</span><span>Debezium</span><span>Trivy</span><span>PagerDuty</span>
+      </div>
+    </div>
+    <div class="marquee marquee-rev">
+      <div class="marquee-track">
+        <span>EKS</span><span>GitOps</span><span>Observability</span><span>SLOs</span><span>Blue-Green</span><span>Autoscaling</span><span>IaC</span><span>CI/CD</span><span>FinOps</span><span>Reliability</span><span>Zero-downtime</span><span>IAM/IRSA</span>
+        <span>EKS</span><span>GitOps</span><span>Observability</span><span>SLOs</span><span>Blue-Green</span><span>Autoscaling</span><span>IaC</span><span>CI/CD</span><span>FinOps</span><span>Reliability</span><span>Zero-downtime</span><span>IAM/IRSA</span>
+      </div>
+    </div>
+  </div>
+
   <main class="container">
-    <section id="experience" class="card">
-      <h2>Experience</h2>
+    <section id="experience" class="section">
+      <p class="section-eyebrow">Career</p>
+      <h2 class="section-title">Experience</h2>
 
-      <article class="job">
-        <h3>Software Engineer, DevOps — Superhero Tech Pvt. Ltd., Bengaluru</h3>
-        <p class="muted">Jul 2025 – Present</p>
-        <ul>
-          <li>Designed and operate a Kubernetes (EKS) platform serving 50+ microservices — HPA, VPA, Cluster Autoscaler and multi-AZ node groups holding 99.95%+ uptime SLA.</li>
-          <li>Provisioned 25 production EKS clusters via Terraform IaC (VPC, control plane, IAM/IRSA, add-ons) with S3 remote state + DynamoDB locking and per-environment workspaces.</li>
-          <li>Authored an org-wide shared Helm chart library, cutting new microservice onboarding from 2+ days to under 30 minutes.</li>
-          <li>Established GitOps delivery with ArgoCD (app-of-apps, sync waves, health checks, instant rollback), eliminating manual <code>kubectl apply</code> in production.</li>
-          <li>Built Woodpecker CI (build, test, lint, Trivy, ECR push) cutting PR feedback to under 8 minutes across 30+ repos; hardened AWS with WAF, GuardDuty, SCPs and CloudTrail for 1M+ monthly users.</li>
-          <li>Deployed Prometheus (200+ targets), Grafana RED dashboards, Loki and PagerDuty alerting — driving a 35% MTTR reduction.</li>
-        </ul>
-      </article>
+      <div class="timeline">
+        <article class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-head">
+              <h3>Software Engineer, DevOps</h3>
+              <span class="tl-date">Jul 2025 – Present</span>
+            </div>
+            <p class="tl-org">Superhero Tech Pvt. Ltd. · Bengaluru</p>
+            <ul>
+              <li>Designed and operate a Kubernetes (EKS) platform serving 50+ microservices — HPA, VPA, Cluster Autoscaler and multi-AZ node groups holding 99.95%+ uptime SLA.</li>
+              <li>Provisioned 25 production EKS clusters via Terraform IaC (VPC, control plane, IAM/IRSA, add-ons) with S3 remote state + DynamoDB locking and per-environment workspaces.</li>
+              <li>Authored an org-wide shared Helm chart library, cutting new microservice onboarding from 2+ days to under 30 minutes.</li>
+              <li>Established GitOps delivery with ArgoCD (app-of-apps, sync waves, health checks, instant rollback), eliminating manual <code>kubectl apply</code> in production.</li>
+              <li>Built Woodpecker CI (build, test, lint, Trivy, ECR push) cutting PR feedback to under 8 minutes across 30+ repos; hardened AWS with WAF, GuardDuty, SCPs and CloudTrail for 1M+ monthly users.</li>
+              <li>Deployed Prometheus (200+ targets), Grafana RED dashboards, Loki and PagerDuty alerting — driving a 35% MTTR reduction.</li>
+            </ul>
+          </div>
+        </article>
 
-      <article class="job">
-        <h3>Software Engineer, Senior SRE — Superhero Tech Pvt. Ltd., Bengaluru</h3>
-        <p class="muted">Apr 2022 – Jul 2025</p>
-        <ul>
-          <li>Owned AWS infrastructure at scale: 100+ EC2 (ASGs), RDS Multi-AZ PostgreSQL, Lambda, CloudFront, EKS and ECR handling millions of daily API requests against SLO targets.</li>
-          <li>Architected AWS MSK (Managed Kafka) for real-time event streaming with Debezium PostgreSQL CDC connectors for sub-second, zero-loss OLTP-to-analytical replication.</li>
-          <li>Designed an RDS read-replica topology with automated failover, offloading analytics and reducing primary DB load by ~40%.</li>
-          <li>Led Blue-Green deployments with automated smoke tests and instant switchback — zero-downtime releases for 18+ consecutive months.</li>
-          <li>Drove a 20% cloud cost reduction (~$50K/year) via Savings Plans, RI analysis, Auto Scaling tuning and S3 lifecycle optimisation.</li>
-        </ul>
-      </article>
+        <article class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-head">
+              <h3>Software Engineer, Senior SRE</h3>
+              <span class="tl-date">Apr 2022 – Jul 2025</span>
+            </div>
+            <p class="tl-org">Superhero Tech Pvt. Ltd. · Bengaluru</p>
+            <ul>
+              <li>Owned AWS infrastructure at scale: 100+ EC2 (ASGs), RDS Multi-AZ PostgreSQL, Lambda, CloudFront, EKS and ECR handling millions of daily API requests against SLO targets.</li>
+              <li>Architected AWS MSK (Managed Kafka) for real-time event streaming with Debezium PostgreSQL CDC connectors for sub-second, zero-loss OLTP-to-analytical replication.</li>
+              <li>Designed an RDS read-replica topology with automated failover, offloading analytics and reducing primary DB load by ~40%.</li>
+              <li>Led Blue-Green deployments with automated smoke tests and instant switchback — zero-downtime releases for 18+ consecutive months.</li>
+              <li>Drove a 20% cloud cost reduction (~$50K/year) via Savings Plans, RI analysis, Auto Scaling tuning and S3 lifecycle optimisation.</li>
+            </ul>
+          </div>
+        </article>
 
-      <article class="job">
-        <h3>Software Engineer, SRE — Treebo Hotels, Bengaluru</h3>
-        <p class="muted">Jun 2021 – Apr 2022 · Intern Jun–Dec 2021</p>
-        <ul>
-          <li>Built production Jenkins pipelines integrated with AWS ECS, EC2 and S3; standardised deployment across 15+ microservices, reducing manual effort by 70%.</li>
-          <li>Instrumented Grafana dashboards and CloudWatch alarms for SLIs (P50/P95/P99 latency, error rate, saturation) — improving incident detection by 30%.</li>
-          <li>Automated deployment and monitoring scripts in Python and Bash, building the PostgreSQL, AWS and Linux foundation for later SRE roles.</li>
-        </ul>
-      </article>
+        <article class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-head">
+              <h3>Software Engineer, SRE</h3>
+              <span class="tl-date">Jun 2021 – Apr 2022</span>
+            </div>
+            <p class="tl-org">Treebo Hotels · Bengaluru · <span class="muted">Intern Jun–Dec 2021</span></p>
+            <ul>
+              <li>Built production Jenkins pipelines integrated with AWS ECS, EC2 and S3; standardised deployment across 15+ microservices, reducing manual effort by 70%.</li>
+              <li>Instrumented Grafana dashboards and CloudWatch alarms for SLIs (P50/P95/P99 latency, error rate, saturation) — improving incident detection by 30%.</li>
+              <li>Automated deployment and monitoring scripts in Python and Bash, building the PostgreSQL, AWS and Linux foundation for later SRE roles.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="skills" class="card">
-      <h2>Technical Skills</h2>
-      <p class="muted">Production-tested across cloud platforms, orchestration, delivery and observability.</p>
+    <section id="skills" class="section">
+      <p class="section-eyebrow">Toolbox</p>
+      <h2 class="section-title">Technical Skills</h2>
 
       <div class="skill-grid">
-        <div class="skill">
+        <div class="skill-card reveal" data-tilt data-tilt-max="6">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6.5 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 16.5 8.5 3.5 3.5 0 0 1 17 18H6.5Z" stroke-linejoin="round"/></svg>
+          </div>
           <h4>Cloud Platforms</h4>
-          <p>AWS — EC2, RDS, Lambda, EKS, ECR, S3, CloudFormation, CloudFront, WAF, Cost Explorer, DMS, MSK. GCP — VPC, VM, Cloud SQL, Secret Manager.</p>
+          <p>AWS — EC2, RDS, Lambda, EKS, ECR, S3, CloudFront, WAF, Cost Explorer, DMS, MSK. GCP — VPC, VM, Cloud SQL, Secret Manager.</p>
         </div>
 
-        <div class="skill">
+        <div class="skill-card reveal" data-tilt data-tilt-max="6">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3Z" stroke-linejoin="round"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5" stroke-linejoin="round"/></svg>
+          </div>
           <h4>Containers &amp; Orchestration</h4>
           <p>Kubernetes (EKS, 25+ clusters via Terraform), Docker, Helm (custom chart authoring), HPA, VPA and Cluster Autoscaler.</p>
         </div>
 
-        <div class="skill">
+        <div class="skill-card reveal" data-tilt data-tilt-max="6">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a4 4 0 1 0 8 0 4 4 0 1 1 8 0" stroke-linecap="round"/><path d="M4 12a4 4 0 1 1 8 0 4 4 0 1 0 8 0" stroke-linecap="round"/></svg>
+          </div>
           <h4>CI/CD &amp; Automation</h4>
           <p>Jenkins, GitHub Actions, ArgoCD (GitOps), Woodpecker CI, Terraform IaC, Python scripting and Bash/Linux.</p>
         </div>
 
-        <div class="skill">
+        <div class="skill-card reveal" data-tilt data-tilt-max="6">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 13h4l2 5 4-12 2 7h6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
           <h4>Observability &amp; Monitoring</h4>
-          <p>Grafana, Prometheus, Loki, CloudWatch, Alertmanager and PagerDuty; SLO/error-budget driven incident management.</p>
+          <p>Grafana, Prometheus, Loki, CloudWatch, Alertmanager and PagerDuty; SLO / error-budget driven incident management.</p>
         </div>
 
-        <div class="skill">
+        <div class="skill-card reveal" data-tilt data-tilt-max="6">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg>
+          </div>
           <h4>Databases &amp; Streaming</h4>
           <p>PostgreSQL, AWS RDS (Multi-AZ, read replicas), AWS MSK (Managed Kafka) and Debezium CDC connectors.</p>
         </div>
 
-        <div class="skill">
+        <div class="skill-card reveal" data-tilt data-tilt-max="6">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" stroke-linejoin="round"/><path d="M18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9L18 15Z" stroke-linejoin="round"/></svg>
+          </div>
           <h4>AI-Assisted Engineering</h4>
-          <p>Daily use of Claude (Sonnet/Opus), GPT-4o and Gemini, with AugmentCode / AmpCode / CodeMux for IaC generation, code review and incident RCA.</p>
+          <p>Daily use of Claude (Sonnet/Opus), GPT-4o and Gemini with AugmentCode / AmpCode / CodeMux for IaC generation, code review and incident RCA.</p>
         </div>
       </div>
+    </section>
 
-      <div class="callout">
-        <strong>Pro Tips:</strong> Treat infrastructure as code, enforce measurable SLOs with error budgets, and ship via GitOps so every change is reviewed, reversible and observable.
+    <section id="projects" class="section">
+      <p class="section-eyebrow">Selected work</p>
+      <h2 class="section-title">Key Projects</h2>
+      <p class="section-lede">Each project ships a <strong>live, interactive dashboard</strong> — click any card to explore its production-style telemetry.</p>
+
+      <div class="project-grid showcase">
+        <a class="project-card reveal" data-tilt data-tilt-max="6" href="https://s3cretagent.github.io/projects/cost-optimisation/">
+          <div class="pc-top"><h3>Cost Optimization Dashboard</h3><span class="live-tag"><i></i>Live</span></div>
+          <p>Multi-account cost observability visualising spend per service, team and environment in real time, with automated right-sizing — cutting monthly cloud costs by ~25%.</p>
+          <div class="pc-metrics"><div><b>−25%</b><span>cloud cost</span></div><div><b>~$50K</b><span>saved / yr</span></div><div><b>5</b><span>accounts</span></div></div>
+          <canvas class="spark" data-spark="cost" width="320" height="46"></canvas>
+          <div class="tags"><span>Grafana</span><span>CloudWatch</span><span>Cost Explorer</span><span>Python / Boto3</span></div>
+          <span class="pc-cta">Open live dashboard <span class="arw">→</span></span>
+        </a>
+
+        <a class="project-card reveal" data-tilt data-tilt-max="6" href="https://s3cretagent.github.io/projects/database-migration/">
+          <div class="pc-top"><h3>Database Migration Automation</h3><span class="live-tag"><i></i>Live</span></div>
+          <p>Zero-downtime migration framework: provisions RDS via Boto3, replicates schemas &amp; indexes, and runs DMS full-load + CDC with Debezium streaming into Kafka.</p>
+          <div class="pc-metrics"><div><b>0s</b><span>downtime</span></div><div><b>1.1B</b><span>rows synced</span></div><div><b>148</b><span>tables</span></div></div>
+          <canvas class="spark" data-spark="db" width="320" height="46"></canvas>
+          <div class="tags"><span>Python</span><span>Boto3</span><span>AWS DMS</span><span>Debezium</span><span>Kafka</span></div>
+          <span class="pc-cta">Open live dashboard <span class="arw">→</span></span>
+        </a>
+
+        <a class="project-card reveal" data-tilt data-tilt-max="6" href="https://s3cretagent.github.io/projects/kubernetes-provisioning/">
+          <div class="pc-top"><h3>Kubernetes Cluster Provisioning</h3><span class="live-tag"><i></i>Live</span></div>
+          <p>Reusable Terraform modules provisioning 25 EKS clusters with IAM/IRSA and remote state, plus a Helm chart library that onboards a new service in under 30 minutes.</p>
+          <div class="pc-metrics"><div><b>25</b><span>EKS clusters</span></div><div><b>&lt;30m</b><span>onboarding</span></div><div><b>99.95%</b><span>uptime</span></div></div>
+          <canvas class="spark" data-spark="k8s" width="320" height="46"></canvas>
+          <div class="tags"><span>Terraform</span><span>EKS</span><span>Helm</span><span>IAM/IRSA</span></div>
+          <span class="pc-cta">Open live dashboard <span class="arw">→</span></span>
+        </a>
       </div>
     </section>
 
-    <section id="projects" class="card">
-      <h2>Key Projects</h2>
-      <div class="project">
-        <h4>Cost Optimization Dashboard</h4>
-        <p class="muted stack">Grafana · AWS CloudWatch · Cost Explorer APIs · Python / Boto3</p>
-        <p>Multi-account cost observability platform visualising spend per service, team and environment in real time, with automated instance right-sizing — reducing monthly cloud costs by ~25%.</p>
-      </div>
+    <section id="education" class="section">
+      <p class="section-eyebrow">Background</p>
+      <h2 class="section-title">Education &amp; Certifications</h2>
 
-      <div class="project">
-        <h4>Database Migration Automation Framework</h4>
-        <p class="muted stack">Python · Boto3 · AWS DMS · Debezium · Kafka</p>
-        <p>Fully automated framework for zero-downtime migrations: provisions RDS via Boto3, replicates schemas/indexes/sequences, and runs DMS full-load + CDC with Debezium connectors for downstream Kafka sync.</p>
-      </div>
+      <div class="edu-card reveal">
+        <div class="edu-head">
+          <h3>B.Tech, Computer Science &amp; Engineering</h3>
+          <span class="tl-date">Jul 2018 – Jun 2022</span>
+        </div>
+        <p class="tl-org">IK Gujral Punjab Technical University · Jalandhar, Punjab</p>
 
-      <div class="project">
-        <h4>Kubernetes Cluster Provisioning Automation</h4>
-        <p class="muted stack">Terraform · EKS · Helm · IAM/IRSA</p>
-        <p>Reusable Terraform modules (VPC, EKS, node groups, IAM/IRSA, add-ons) provisioning 25 EKS clusters with remote S3 state, DynamoDB locking and per-environment workspaces; Helm library onboards new services in under 30 minutes.</p>
+        <div class="badges">
+          <span class="badge">AWS Educate Cloud 101</span>
+          <span class="badge">AWS Educate Solutions Architect</span>
+          <span class="badge">Python Training — IIT Bombay</span>
+          <span class="badge">NASSCOM AI Practitioner</span>
+        </div>
+        <ul class="lead-list">
+          <li>Mentored junior engineers on Kubernetes operations, CI/CD best practices and cloud cost optimisation.</li>
+          <li>Active in hackathons and innovation sprints; shipped multiple live projects within the organisation.</li>
+        </ul>
       </div>
     </section>
 
-    <section id="education" class="card">
-      <h2>Education &amp; Certifications</h2>
-      <article class="job">
-        <h3>B.Tech, Computer Science &amp; Engineering — IK Gujral Punjab Technical University</h3>
-        <p class="muted">Jul 2018 – Jun 2022 · Jalandhar, Punjab</p>
-      </article>
-      <div class="badges">
-        <span class="badge">AWS Educate Cloud 101</span>
-        <span class="badge">AWS Educate Solutions Architect</span>
-        <span class="badge">Python Training — IIT Bombay</span>
-        <span class="badge">NASSCOM AI Practitioner</span>
-      </div>
-      <ul class="lead-list">
-        <li>Mentored junior engineers on Kubernetes operations, CI/CD best practices and cloud cost optimisation.</li>
-        <li>Hosted technical workshops as part of the ACM Chapter, Chandigarh Engineering College; active in hackathons and innovation sprints.</li>
-      </ul>
-    </section>
+    <section id="contact" class="section">
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="section-title">Contact</h2>
 
-    <section id="contact" class="card">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:shubhmalhotra07@gmail.com">shubhmalhotra07@gmail.com</a> • Phone: +91-9654910542 • New Delhi, India</p>
-      <form id="contactForm" onsubmit="return submitContact(event)">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" placeholder="Message" required></textarea>
-        <button type="submit" class="btn">Send</button>
-        <small id="contactNote" class="muted">This form uses your mail client (mailto) by default.</small>
-      </form>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p>Have a role, a reliability problem, or an infra project in mind? Let's talk.</p>
+          <ul class="contact-list">
+            <li><span class="c-label">Email</span><a href="mailto:shubhmalhotra07@gmail.com">shubhmalhotra07@gmail.com</a></li>
+            <li><span class="c-label">Phone</span><a href="tel:+919654910542">+91-9654910542</a></li>
+            <li><span class="c-label">Location</span><span>New Delhi, India</span></li>
+            <li><span class="c-label">LinkedIn</span><a href="https://www.linkedin.com/in/shubh-malhotra-881b47ab" target="_blank" rel="noopener">/shubh-malhotra</a></li>
+          </ul>
+        </div>
+
+        <form id="contactForm" class="reveal" onsubmit="return submitContact(event)">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <textarea name="message" placeholder="Message" required></textarea>
+          <button type="submit" class="btn btn-primary">Send message</button>
+          <small id="contactNote" class="muted">Opens your mail client (mailto) by default.</small>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> Shubh Malhotra — Built with care</p>
+    <p>© <span id="year"></span> Shubh Malhotra · Hand-built with a live 3D backdrop.</p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
