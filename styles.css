@@ -342,7 +342,9 @@ html.light .scrim {
 
 /* Hero visual — 3D avatar */
 .hero-visual { display: flex; justify-content: center; }
-.avatar-stage { width: 300px; height: 300px; perspective: 900px; }
+.avatar-stage { position: relative; width: 300px; height: 300px; perspective: 900px; }
+/* chips float over the avatar on desktop (absolute), tidy row on mobile */
+.kpi-chips { position: absolute; inset: 0; pointer-events: none; }
 .avatar-3d {
   position: relative;
   width: 100%; height: 100%;
@@ -935,8 +937,11 @@ a.project-card { text-decoration: none; color: inherit; cursor: pointer; }
   #hamburger { display: flex; }
   .mobile-menu { display: flex; }
   .nav-right .btn:not(#themeToggle) { display: none; }
-  /* KPI chips crowd the ring on the stacked mobile hero; the stat strip below carries these numbers */
-  .float-chip { display: none; }
+  /* avatar + KPI chips stack cleanly: photo on top, tidy pill row below (no ring overlap) */
+  .avatar-stage { width: auto; height: auto; perspective: none; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .avatar-3d { width: 244px; height: 244px; }
+  .kpi-chips { position: static; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 360px; pointer-events: auto; }
+  .float-chip { position: static; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
 }
 
 @media (max-width: 620px) {
