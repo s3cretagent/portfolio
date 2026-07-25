@@ -935,6 +935,8 @@ a.project-card { text-decoration: none; color: inherit; cursor: pointer; }
   #hamburger { display: flex; }
   .mobile-menu { display: flex; }
   .nav-right .btn:not(#themeToggle) { display: none; }
+  /* KPI chips crowd the ring on the stacked mobile hero; the stat strip below carries these numbers */
+  .float-chip { display: none; }
 }
 
 @media (max-width: 620px) {
