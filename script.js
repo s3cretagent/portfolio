@@ -418,11 +418,23 @@ if (!prefersReducedMotion && window.matchMedia('(min-width: 900px) and (pointer:
 
   // touch-reactive: the mesh crest follows the finger, with a ripple ring
   const touchRing = document.getElementById('touchRing');
+  let holdTimer = null;
+  const endTouch = () => {
+    if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+    if (touchRing) touchRing.classList.remove('on');
+    // ease the crest back to the resting centre
+    pointer.wx = 999; pointer.wz = 999;
+  };
   const showRing = (x, y) => {
     if (!touchRing) return;
     touchRing.style.left = x + 'px';
     touchRing.style.top = y + 'px';
     touchRing.classList.add('on');
+    // safety: if the finger is held (long-press) and touchend never fires
+    // — e.g. iOS swallows it for the callout — auto-release after 2s so the
+    // ring can't get stuck and the crest stops driving the mesh.
+    if (holdTimer) clearTimeout(holdTimer);
+    holdTimer = setTimeout(endTouch, 2000);
   };
   const onTouch = (e) => {
     const t = e.touches && e.touches[0];
@@ -432,13 +444,9 @@ if (!prefersReducedMotion && window.matchMedia('(min-width: 900px) and (pointer:
   };
   window.addEventListener('touchstart', onTouch, { passive: true });
   window.addEventListener('touchmove', onTouch, { passive: true });
-  const endTouch = () => {
-    if (touchRing) touchRing.classList.remove('on');
-    // ease the crest back to the resting centre
-    pointer.wx = 999; pointer.wz = 999;
-  };
   window.addEventListener('touchend', endTouch, { passive: true });
   window.addEventListener('touchcancel', endTouch, { passive: true });
+  window.addEventListener('scroll', endTouch, { passive: true });
 
   function resize() {
     const w = window.innerWidth, h = window.innerHeight;
