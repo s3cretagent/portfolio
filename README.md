@@ -12,7 +12,7 @@ Reduced deployment time by 60%, cut cloud costs ~20%, and implemented observabil
 - **Title:** Software Engineer — DevOps / SRE  
 - **Location:** Bengaluru, India  
 - **Email:** [shubhmalhotra07@gmail.com](mailto:shubhmalhotra07@gmail.com)  
-- **LinkedIn:** [Shubh Malhotra](https://www.linkedin.com/in/shubh-malhotra-881b47ab)  
+- **LinkedIn:** [Shubh Malhotra](https://www.linkedin.com/in/shubhmalhotra07)  
 - **GitHub:** [github.com/s3cretagent](https://github.com/s3cretagent)  
 - **Resume:** [Download PDF](resume.pdf)
 
@@ -59,7 +59,7 @@ Reduced deployment time by 60%, cut cloud costs ~20%, and implemented observabil
 
 - **Email:** [shubhmalhotra07@gmail.com](mailto:shubhmalhotra07@gmail.com)  
 - **Phone:** +91-9654910542  
-- **LinkedIn:** [Shubh Malhotra](https://www.linkedin.com/in/shubh-malhotra-881b47ab)  
+- **LinkedIn:** [Shubh Malhotra](https://www.linkedin.com/in/shubhmalhotra07)  
 - **GitHub:** [s3cretagent](https://github.com/s3cretagent)
 
 ---
