@@ -1,5 +1,5 @@
 /* =========================================================
-   Shubh Malhotra — Portfolio (modern redesign)
+   Shubh Malhotra - Portfolio (modern redesign)
    ========================================================= */
 
 :root {
@@ -407,7 +407,7 @@ html.light .scrim {
   border-radius: 12px;
   border-top: none;
 }
-/* the resume button sits on the green gradient — force readable ink, not muted grey */
+/* the resume button sits on the green gradient, force readable ink, not muted grey */
 .mobile-menu a.btn-primary {
   color: var(--ink);
   font-weight: 700;
@@ -520,7 +520,7 @@ html.light .scrim {
   color: var(--muted);
 }
 
-/* Hero visual — 3D avatar */
+/* Hero visual, 3D avatar */
 .hero-visual {
   display: flex;
   justify-content: center;
@@ -560,7 +560,7 @@ html.light .scrim {
   opacity: 0.32;
 }
 
-/* rotating gradient ring — a conic disc sitting BEHIND the photo, so the
+/* rotating gradient ring, a conic disc sitting BEHIND the photo, so the
    opaque photo covers the centre and only the ring shows (no fragile mask). */
 .avatar-ring {
   position: absolute;

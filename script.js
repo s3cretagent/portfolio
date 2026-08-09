@@ -1,5 +1,5 @@
 /* =========================================================
-   Shubh Malhotra — Portfolio interactions
+   Shubh Malhotra - Portfolio interactions
    ========================================================= */
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -43,7 +43,7 @@ if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   revealEls.forEach((el) => el.classList.add('in'));
 } else {
   // re-triggers both ways: reveals on scroll-down, resets when it leaves so it
-  // animates again on the way back up — keeps the page feeling alive.
+  // animates again on the way back up, keeps the page feeling alive.
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -281,7 +281,7 @@ if (!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
       } else if (node.nodeType === Node.TEXT_NODE) {
         splitText(node.textContent, '');
       } else if (node.nodeType === Node.ELEMENT_NODE && node.children.length === 0) {
-        // e.g. the gradient name — split into words so it can wrap on mobile
+        // e.g. the gradient name, split into words so it can wrap on mobile
         splitText(node.textContent, node.className);
       } else {
         const word = document.createElement('span');
@@ -350,7 +350,7 @@ if (!prefersReducedMotion && window.matchMedia('(min-width: 900px) and (pointer:
 
 /* ---------- WebGL interactive wave-mesh background (Three.js) ----------
    A full-viewport 3D wireframe surface with animated crests and troughs.
-   It flows on its own, rises toward the cursor, and drifts as you scroll —
+   It flows on its own, rises toward the cursor, and drifts as you scroll,
    so the mesh reads as one continuous landscape running down the page.
    Falls back to the aurora/grain if WebGL / Three.js is unavailable.     */
 (function initGL() {
@@ -431,7 +431,7 @@ if (!prefersReducedMotion && window.matchMedia('(min-width: 900px) and (pointer:
     touchRing.style.top = y + 'px';
     touchRing.classList.add('on');
     // safety: if the finger is held (long-press) and touchend never fires
-    // — e.g. iOS swallows it for the callout — auto-release after 2s so the
+    // e.g. iOS swallows it for the callout, auto-release after 2s so the
     // ring can't get stuck and the crest stops driving the mesh.
     if (holdTimer) clearTimeout(holdTimer);
     holdTimer = setTimeout(endTouch, 2000);
