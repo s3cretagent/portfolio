@@ -10,7 +10,7 @@ Software Engineer (DevOps/SRE) with 5+ years experience in cloud infrastructure 
 Reduced deployment time by 60%, cut cloud costs ~20%, and implemented observability for large-scale microservices.
 
 - **Title:** Software Engineer — DevOps / SRE  
-- **Location:** Bengaluru, India  
+- **Location:** Bhopal, Madhya Pradesh, India  
 - **Email:** [shubhmalhotra07@gmail.com](mailto:shubhmalhotra07@gmail.com)  
 - **LinkedIn:** [Shubh Malhotra](https://www.linkedin.com/in/shubhmalhotra07)  
 - **GitHub:** [github.com/s3cretagent](https://github.com/s3cretagent)  
