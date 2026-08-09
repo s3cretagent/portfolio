@@ -88,6 +88,7 @@ Reusable Terraform modules (VPC, EKS, node groups, IAM/IRSA, add-ons) provisioni
 | **Observability & Monitoring** | Grafana, Prometheus, Loki, CloudWatch, Alertmanager, PagerDuty, Incident Management |
 | **Databases & Streaming** | PostgreSQL, AWS RDS (Multi-AZ, Read Replicas), AWS MSK (Managed Kafka), Debezium CDC Connectors |
 | **Security & Compliance** | IAM least-privilege, IRSA, AWS WAF, GuardDuty, SCPs, centralised CloudTrail, Trivy image scanning, SonarQube quality gates |
+| **AI-Assisted Engineering** | ChatGPT, Claude, Gemini, AugmentCode, AmpCode, CodeMux, used daily for IaC generation, code review and incident RCA |
 | **Tools & Collaboration** | Jira, Confluence, Git, SonarQube, Trivy, PagerDuty, Slack, cross-team mentorship |
 
 ---
