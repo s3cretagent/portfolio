@@ -32,8 +32,19 @@
           document.documentElement.classList.add('light');
         }
       } catch (e) {}
+      // .reveal starts at opacity 0 and only script.js brings it back. If the
+      // script fails to load or throws, drop the js flag so the page still
+      // renders instead of showing empty sections.
+      setTimeout(function () {
+        if (!window.__portfolioReady) document.documentElement.classList.remove('js');
+      }, 4000);
     })();
   </script>
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
 </head>
 <body>
   <!-- Scroll progress -->
@@ -205,6 +216,8 @@
               <li>Designed an RDS read-replica topology with automated failover, offloading analytics and reducing primary DB load by ~40%.</li>
               <li>Led Blue-Green deployments with automated smoke tests and instant switchback, achieving zero-downtime releases for 18+ consecutive months.</li>
               <li>Drove a 20% cloud cost reduction (~$50K/year) via Savings Plans, RI analysis, Auto Scaling tuning and S3 lifecycle optimisation.</li>
+            <li>Mentored junior engineers on Kubernetes operations, CI/CD best practices and cloud cost optimisation.</li>
+            <li>Active in hackathons and innovation sprints; shipped multiple live projects within the organisation.</li>
             </ul>
           </div>
         </article>
@@ -298,8 +311,8 @@
       <div class="project-grid showcase">
         <a class="project-card reveal" data-tilt data-tilt-max="6" href="https://s3cretagent.github.io/projects/cost-optimisation/">
           <div class="pc-top"><h3>Cost Optimization Dashboard</h3><span class="live-tag"><i></i>Live</span></div>
-          <p>Multi-account cost observability visualising spend per service, team and environment in real time, with automated right-sizing that cut monthly cloud costs by ~25%.</p>
-          <div class="pc-metrics"><div><b>−25%</b><span>cloud cost</span></div><div><b>~$50K</b><span>saved / yr</span></div><div><b>5</b><span>accounts</span></div></div>
+          <p>Multi-account cost observability visualising spend per service, team and environment in real time, with automated right-sizing that cut monthly cloud costs by ~20%.</p>
+          <div class="pc-metrics"><div><b>−20%</b><span>cloud cost</span></div><div><b>~$50K</b><span>saved / yr</span></div><div><b>5</b><span>accounts</span></div></div>
           <canvas class="spark" data-spark="cost" width="320" height="46"></canvas>
           <div class="tags"><span>Grafana</span><span>CloudWatch</span><span>Cost Explorer</span><span>Python / Boto3</span></div>
           <span class="pc-cta">Open live dashboard <span class="arw">→</span></span>
@@ -337,14 +350,18 @@
         <p class="tl-org">IK Gujral Punjab Technical University · Jalandhar, Punjab</p>
 
         <div class="badges">
-          <span class="badge">AWS Educate Cloud 101</span>
-          <span class="badge">AWS Educate Solutions Architect</span>
-          <span class="badge">Python Training, IIT Bombay</span>
-          <span class="badge">NASSCOM AI Practitioner</span>
+          <span class="badge">AWS Educate: Cloud Computing 101</span>
+          <span class="badge">AWS Educate: Solutions Architect</span>
+          <span class="badge">AWS Educate: Cybersecurity Specialist</span>
+          <span class="badge">AWS Educate: Software Development Engineer</span>
+          <span class="badge">Cisco Cybersecurity Essentials</span>
+          <span class="badge">VMware IT Academy: Network Virtualization</span>
+          <span class="badge">VMware IT Academy: Software-Defined Storage</span>
+          <span class="badge">Python 3.4.3, IIT Bombay</span>
+          <span class="badge">NASSCOM Foundational AI</span>
         </div>
         <ul class="lead-list">
-          <li>Mentored junior engineers on Kubernetes operations, CI/CD best practices and cloud cost optimisation.</li>
-          <li>Active in hackathons and innovation sprints; shipped multiple live projects within the organisation.</li>
+          <li>Hosted technical workshops as part of the ACM Chapter, Chandigarh Engineering College.</li>
         </ul>
       </div>
     </section>
@@ -359,15 +376,19 @@
           <ul class="contact-list">
             <li><span class="c-label">Email</span><a href="mailto:shubhmalhotra07@gmail.com">shubhmalhotra07@gmail.com</a></li>
             <li><span class="c-label">Phone</span><a href="tel:+919654910542">+91-9654910542</a></li>
-            <li><span class="c-label">Location</span><span>New Delhi, India</span></li>
+            <li><span class="c-label">Location</span><span>Bhopal, Madhya Pradesh, India</span></li>
             <li><span class="c-label">LinkedIn</span><a href="https://www.linkedin.com/in/shubhmalhotra07" target="_blank" rel="noopener">/shubhmalhotra07</a></li>
+            <li><span class="c-label">GitHub</span><a href="https://github.com/s3cretagent" target="_blank" rel="noopener">/s3cretagent</a></li>
           </ul>
         </div>
 
         <form id="contactForm" class="reveal" onsubmit="return submitContact(event)">
-          <input type="text" name="name" placeholder="Your name" required />
-          <input type="email" name="email" placeholder="Email" required />
-          <textarea name="message" placeholder="Message" required></textarea>
+          <label class="sr-only" for="cf-name">Your name</label>
+          <input id="cf-name" type="text" name="name" placeholder="Your name" autocomplete="name" required />
+          <label class="sr-only" for="cf-email">Email</label>
+          <input id="cf-email" type="email" name="email" placeholder="Email" autocomplete="email" required />
+          <label class="sr-only" for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" placeholder="Message" required></textarea>
           <button type="submit" class="btn btn-primary">Send message</button>
           <small id="contactNote" class="muted">Opens your mail client (mailto) by default.</small>
         </form>

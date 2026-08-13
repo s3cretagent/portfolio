@@ -49,6 +49,8 @@ Software Engineer (DevOps/SRE) with 5+ years building and operating cloud infras
 - Engineered Jenkins multi-branch pipelines increasing deployment frequency by 60% and eliminating all SSH-based manual deployments.
 - Led Blue-Green deployments with automated smoke tests and instant traffic switchback, achieving zero-downtime releases for 18+ consecutive months.
 - Drove a 20% cloud cost reduction (~$50K/year) via EC2 Savings Plans, Reserved Instance analysis, Auto Scaling tuning and S3 lifecycle optimisation. Built GitHub Actions workflows with Trivy scanning, EKS rolling deployments and health gate verification.
+- Mentored junior engineers on Kubernetes operations, CI/CD best practices and cloud cost optimisation.
+- Active in hackathons and innovation sprints; shipped multiple live projects within the organisation.
 
 ### Software Engineer, SRE at Treebo Hotels, Bengaluru
 **Jun 2021 – Apr 2022** (Intern: Jun 2021 – Dec 2021)
@@ -64,7 +66,7 @@ Software Engineer (DevOps/SRE) with 5+ years building and operating cloud infras
 ### Cost Optimization Dashboard
 `Grafana` · `AWS CloudWatch` · `Cost Explorer APIs` · `Python / Boto3`
 
-Multi-account cost observability platform visualising spend per service, team and environment in real time. Automated instance right-sizing via Python/CloudWatch metrics, reducing monthly cloud costs by 25% and improving cross-team spend visibility.
+Multi-account cost observability platform visualising spend per service, team and environment in real time. Automated instance right-sizing via Python/CloudWatch metrics, reducing monthly cloud costs by 20% and improving cross-team spend visibility.
 
 ### Database Migration Automation Framework
 `Python` · `Boto3` · `AWS DMS` · `Debezium` · `Kafka`
@@ -102,9 +104,9 @@ Bachelor of Technology in Computer Science & Engineering · Jul 2018 – Jun 202
 
 ## Certifications & Leadership
 
-- AWS Educate Cloud 101 · AWS Educate Solutions Architect · Python Training, IIT Bombay · NASSCOM AI Practitioner
-- Active in hackathons and innovation sprints; shipped multiple live projects within the organisation. Hosted technical workshops as part of the ACM Chapter, Chandigarh Engineering College.
-- Mentored junior engineers on Kubernetes operations, CI/CD best practices and cloud cost optimisation.
+- AWS Educate: Cloud Computing 101, Solutions Architect, Cybersecurity Specialist, Software Development Engineer
+- Cisco Cybersecurity Essentials, VMware IT Academy (Network Virtualization, Software-Defined Storage), Python 3.4.3 IIT Bombay, NASSCOM Foundational AI
+- Hosted technical workshops as part of the ACM Chapter, Chandigarh Engineering College.
 
 ---
 

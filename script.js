@@ -75,36 +75,59 @@ if ('IntersectionObserver' in window && navLinks.length) {
 }
 
 /* ---------- Animated stat counters ---------- */
+// rAF is paused while the page is hidden, so a counter kicked off in a
+// background tab would sit at its "0" placeholder. Track anything still
+// mid-count and settle it on the way back.
+const pendingCounts = new Set();
+
+function finalValue(el) {
+  const target = parseFloat(el.dataset.target);
+  const decimals = parseInt(el.dataset.decimals || '0', 10);
+  return (el.dataset.prefix || '') + target.toFixed(decimals) + (el.dataset.suffix || '');
+}
+
+function settleCount(el) {
+  el.textContent = finalValue(el);
+  el.dataset.counted = '1';
+  pendingCounts.delete(el);
+}
+
 function animateCount(el) {
+  if (el.dataset.counted === '1') return;
+  // no animation to run: snap straight to the number so it can never read 0
+  if (prefersReducedMotion || document.hidden) {
+    settleCount(el);
+    return;
+  }
   const target = parseFloat(el.dataset.target);
   const decimals = parseInt(el.dataset.decimals || '0', 10);
   const prefix = el.dataset.prefix || '';
   const suffix = el.dataset.suffix || '';
-  if (prefersReducedMotion) {
-    el.textContent = prefix + target.toFixed(decimals) + suffix;
-    return;
-  }
   const duration = 1400;
   let start = null;
+  pendingCounts.add(el);
   const step = (ts) => {
+    if (el.dataset.counted === '1') return; // settled by visibilitychange
     if (start === null) start = ts;
     const p = Math.min((ts - start) / duration, 1);
     const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
     el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
     if (p < 1) requestAnimationFrame(step);
-    else el.textContent = prefix + target.toFixed(decimals) + suffix;
+    else settleCount(el);
   };
   requestAnimationFrame(step);
 }
+
 const statNums = document.querySelectorAll('.stat-num');
 if ('IntersectionObserver' in window) {
   const statObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          statObserver.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        animateCount(entry.target);
+        // only stop watching once the number is actually on screen, so an
+        // interrupted run still gets a second chance
+        if (entry.target.dataset.counted === '1') statObserver.unobserve(entry.target);
       });
     },
     { threshold: 0.5 }
@@ -113,6 +136,11 @@ if ('IntersectionObserver' in window) {
 } else {
   statNums.forEach(animateCount);
 }
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) return;
+  pendingCounts.forEach(settleCount);
+});
 
 /* ---------- Scroll progress bar ---------- */
 const scrollBar = document.getElementById('scrollBar');
@@ -573,3 +601,6 @@ function submitContact(e) {
   window.location.href = `mailto:shubhmalhotra07@gmail.com?subject=${subj}&body=${body}`;
   return false;
 }
+
+/* signals the head failsafe that the script loaded and ran */
+window.__portfolioReady = true;
