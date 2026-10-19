@@ -196,8 +196,8 @@
               <li>Provisioned 25 production EKS clusters via Terraform IaC (VPC, control plane, IAM/IRSA, add-ons) with S3 remote state + DynamoDB locking and per-environment workspaces.</li>
               <li>Authored an org-wide shared Helm chart library, cutting new microservice onboarding from 2+ days to under 30 minutes.</li>
               <li>Established GitOps delivery with ArgoCD (app-of-apps, sync waves, health checks, instant rollback), eliminating manual <code>kubectl apply</code> in production.</li>
-              <li>Built Woodpecker CI (build, test, lint, Trivy, ECR push) cutting PR feedback to under 8 minutes across 30+ repos; hardened AWS with WAF, GuardDuty, SCPs and CloudTrail for 1M+ monthly users.</li>
-              <li>Deployed Prometheus (200+ targets), Grafana RED dashboards, Loki and PagerDuty alerting, driving a 35% MTTR reduction.</li>
+              <li>Built Woodpecker CI (build, test, lint, Trivy, ECR push) cutting PR feedback to under 8 minutes across 30+ repos; added SonarQube and Trivy quality gates to Jenkins, cutting the release cycle by 50%.</li>
+              <li>Deployed Prometheus (200+ targets), Grafana RED dashboards, Loki and PagerDuty alerting, driving a 35% MTTR reduction; hardened AWS security with WAF, GuardDuty, SCPs and CloudTrail for 1M+ monthly users.</li>
             </ul>
           </div>
         </article>
@@ -213,7 +213,8 @@
             <ul>
               <li>Owned AWS infrastructure at scale: 100+ EC2 (ASGs), RDS Multi-AZ PostgreSQL, Lambda, CloudFront, EKS and ECR handling millions of daily API requests against SLO targets.</li>
               <li>Architected AWS MSK (Managed Kafka) for real-time event streaming with Debezium PostgreSQL CDC connectors for sub-second, zero-loss OLTP-to-analytical replication.</li>
-              <li>Designed an RDS read-replica topology with automated failover, offloading analytics and reducing primary DB load by ~40%.</li>
+              <li>Designed a high-availability RDS read-replica topology with automated failover, offloading analytics and reducing primary DB load by ~40%.</li>
+              <li>Engineered Jenkins multi-branch pipelines that raised deployment frequency by 60% and eliminated SSH-based manual deployments.</li>
               <li>Led Blue-Green deployments with automated smoke tests and instant switchback, achieving zero-downtime releases for 18+ consecutive months.</li>
               <li>Drove a 20% cloud cost reduction (~$50K/year) via Savings Plans, RI analysis, Auto Scaling tuning and S3 lifecycle optimisation.</li>
             <li>Mentored junior engineers on Kubernetes operations, CI/CD best practices and cloud cost optimisation.</li>
@@ -265,8 +266,8 @@
           <div class="skill-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a4 4 0 1 0 8 0 4 4 0 1 1 8 0" stroke-linecap="round"/><path d="M4 12a4 4 0 1 1 8 0 4 4 0 1 0 8 0" stroke-linecap="round"/></svg>
           </div>
-          <h4>CI/CD &amp; Automation</h4>
-          <p>Jenkins, GitHub Actions, ArgoCD (GitOps), Woodpecker CI, Terraform IaC, Python scripting and Bash/Linux.</p>
+          <h4>CI/CD &amp; Infrastructure as Code</h4>
+          <p>Jenkins, GitHub Actions, ArgoCD (GitOps) and Woodpecker CI. Terraform (modules, S3 remote state, workspaces), CloudFormation and Ansible; Python (Boto3) and Bash/Linux scripting.</p>
         </div>
 
         <div class="skill-card reveal" data-tilt data-tilt-max="6">
@@ -298,7 +299,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" stroke-linejoin="round"/><path d="M18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9L18 15Z" stroke-linejoin="round"/></svg>
           </div>
           <h4>AI-Assisted Engineering</h4>
-          <p>Daily use of Claude (Sonnet/Opus), GPT-4o and Gemini with AugmentCode / AmpCode / CodeMux for IaC generation, code review and incident RCA.</p>
+          <p>Daily use of Claude, ChatGPT and Gemini with AugmentCode, AmpCode and CodeMux for IaC generation, code review and incident RCA.</p>
         </div>
       </div>
     </section>

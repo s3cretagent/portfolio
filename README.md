@@ -85,6 +85,7 @@ Reusable Terraform modules (VPC, EKS, node groups, IAM/IRSA, add-ons) provisioni
 | Area | Tools |
 | --- | --- |
 | **Cloud & Networking** | AWS (EC2, RDS, Lambda, EKS, ECR, S3, CloudFormation, CloudFront, Route 53, ELB/ALB/NLB, ACM, WAF, GuardDuty, Cost Explorer, DMS, MSK), GCP (VPC, VM, Cloud SQL, Secret Manager), DNS, TLS/SSL, load balancers, VPC/subnets/security groups |
+| **Infrastructure as Code** | Terraform (modules, S3 remote state, workspaces), CloudFormation, Ansible |
 | **Containers & Orchestration** | Kubernetes (EKS, 25+ clusters via Terraform), Docker, Helm (custom chart authoring), HPA, VPA, Cluster Autoscaler |
 | **CI/CD & Automation** | Jenkins, GitHub Actions, ArgoCD (GitOps), Woodpecker CI, Python scripting, Bash/Linux |
 | **Observability & Monitoring** | Grafana, Prometheus, Loki, CloudWatch, Alertmanager, PagerDuty, Incident Management |
