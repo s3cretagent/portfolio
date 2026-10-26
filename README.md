@@ -80,6 +80,20 @@ Reusable Terraform modules (VPC, EKS, node groups, IAM/IRSA, add-ons) provisioni
 
 ---
 
+## Open Source Tools
+
+Small tools for problems I kept hitting in production. All public on [GitHub](https://github.com/s3cretagent).
+
+| Tool | Language | What it does |
+| --- | --- | --- |
+| [kubed](https://github.com/s3cretagent/kubed) | Go | Terminal app for running Kubernetes: broken apps first, plain-language fixes, and EKS cost per cluster and app. Installs with Homebrew. |
+| [tf-blast-radius](https://github.com/s3cretagent/tf-blast-radius) | Python | Scores a Terraform plan by how much damage it can do and gates the PR on it. |
+| [delta-cve-gate](https://github.com/s3cretagent/delta-cve-gate) | Python | Fails a build on the CVEs it introduced, not the ones it inherited (Trivy/Grype baseline diff). |
+| [alertcov](https://github.com/s3cretagent/alertcov) | Python | Tests for Prometheus alerts: replays failure modes and reports coverage and time to detect. |
+| [cost-per-nine](https://github.com/s3cretagent/cost-per-nine) | Python | Rightsizing gated on spare error budget, with cost per nine of availability. |
+
+---
+
 ## Technical Skills
 
 | Area | Tools |

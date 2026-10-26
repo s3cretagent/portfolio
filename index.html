@@ -90,6 +90,7 @@
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#open-source">Open Source</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </div>
@@ -105,6 +106,7 @@
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#open-source">Open Source</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
       <a class="btn btn-primary" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
@@ -335,6 +337,49 @@
           <canvas class="spark" data-spark="k8s" width="320" height="46"></canvas>
           <div class="tags"><span>Terraform</span><span>EKS</span><span>Helm</span><span>IAM/IRSA</span></div>
           <span class="pc-cta">Open live dashboard <span class="arw">→</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section id="open-source" class="section">
+      <p class="section-eyebrow">Built in the open</p>
+      <h2 class="section-title">Open Source Tools</h2>
+      <p class="section-lede">Small tools for problems I kept hitting in production. All public on <a href="https://github.com/s3cretagent" target="_blank" rel="noopener">GitHub</a>.</p>
+
+      <div class="project-grid">
+        <a class="project-card reveal" data-tilt data-tilt-max="6" href="https://github.com/s3cretagent/kubed" target="_blank" rel="noopener">
+          <div class="pc-top"><h3>kubed</h3></div>
+          <p>A terminal app for running Kubernetes. It lists broken apps first, explains in plain words what is wrong and how to fix it, and on EKS shows what each cluster and app costs from your own AWS bill and live spot prices.</p>
+          <div class="tags"><span>Go</span><span>Kubernetes</span><span>EKS</span><span>Homebrew</span></div>
+          <span class="pc-cta">View on GitHub <span class="arw">→</span></span>
+        </a>
+
+        <a class="project-card reveal" data-tilt data-tilt-max="6" href="https://github.com/s3cretagent/tf-blast-radius" target="_blank" rel="noopener">
+          <div class="pc-top"><h3>tf-blast-radius</h3></div>
+          <p>Scores a Terraform plan by how much damage it can do: stateful replacements, downstream dependents and production targets. Then it gates the pull request on that score.</p>
+          <div class="tags"><span>Python</span><span>Terraform</span><span>CI gate</span></div>
+          <span class="pc-cta">View on GitHub <span class="arw">→</span></span>
+        </a>
+
+        <a class="project-card reveal" data-tilt data-tilt-max="6" href="https://github.com/s3cretagent/delta-cve-gate" target="_blank" rel="noopener">
+          <div class="pc-top"><h3>delta-cve-gate</h3></div>
+          <p>Fails a build on the CVEs it introduced, not the hundreds it inherited, by comparing Trivy or Grype scans against a baseline. Scanning gates stay switched on.</p>
+          <div class="tags"><span>Python</span><span>Trivy</span><span>Grype</span><span>DevSecOps</span></div>
+          <span class="pc-cta">View on GitHub <span class="arw">→</span></span>
+        </a>
+
+        <a class="project-card reveal" data-tilt data-tilt-max="6" href="https://github.com/s3cretagent/alertcov" target="_blank" rel="noopener">
+          <div class="pc-top"><h3>alertcov</h3></div>
+          <p>Tests for Prometheus alerts. Describe how your system breaks, and it replays each failure against your real rule files to report alert coverage and time to detect.</p>
+          <div class="tags"><span>Python</span><span>Prometheus</span><span>SRE</span></div>
+          <span class="pc-cta">View on GitHub <span class="arw">→</span></span>
+        </a>
+
+        <a class="project-card reveal" data-tilt data-tilt-max="6" href="https://github.com/s3cretagent/cost-per-nine" target="_blank" rel="noopener">
+          <div class="pc-top"><h3>cost-per-nine</h3></div>
+          <p>Rightsizing that uses your error budget, not just CPU graphs. It only downsizes a service with spare capacity and spare error budget, and reports what each nine of availability costs.</p>
+          <div class="tags"><span>Python</span><span>FinOps</span><span>SLOs</span></div>
+          <span class="pc-cta">View on GitHub <span class="arw">→</span></span>
         </a>
       </div>
     </section>
